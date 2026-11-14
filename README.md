@@ -6,7 +6,7 @@ Postgres-Inspector merupakan MCP yang digunakan bukan hanya dapat isi query dari
 1. Lakukan Pengunduhan di lokal komputer anda
 2. Lakukan integrasi dengan AI Agent Tools anda. Untuk saat ini, dari aku akan berikan tata caranya :
 - Antigravity
-'''
+```
 {
   "mcpServers": {
     "postgres-inspector": {
@@ -17,6 +17,7 @@ Postgres-Inspector merupakan MCP yang digunakan bukan hanya dapat isi query dari
     }
   }
 }
-'''
+```
+
 3. Buatlah .env pada folder. Untuk panduan, anda bisa mengisi pada bagian ini 'DB_HOST', 'DB_PORT'
 'DB_USER', 'DB_PASSWORD', 'DB_NAME', 'DB_SSLMODE'
