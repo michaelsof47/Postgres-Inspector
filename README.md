@@ -20,5 +20,3 @@ Postgres-Inspector merupakan MCP yang digunakan bukan hanya dapat isi query dari
 
 3. Buatlah .env pada folder. Untuk panduan, anda bisa mengisi pada bagian ini 'DB_HOST', 'DB_PORT'
 'DB_USER', 'DB_PASSWORD', 'DB_NAME', 'DB_SSLMODE'
-
-## Requirement
