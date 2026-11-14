@@ -1,6 +1,7 @@
 from contextlib import closing
 import os
 import csv
+import subprocess
 from pathlib import Path
 from dotenv import load_dotenv
 from psycopg2 import sql, connect
@@ -63,6 +64,31 @@ def export_into_csv(table_name: str, file_path: str = "", limit: int = 100) -> s
         writer.writerows(rows)
 
     return f"Data dari tabel {table_name} berhasil dibuat di {target_path}"
+
+@mcp.tool()
+def export_schema(schema: str = "public", file_path: str | None = None):
+    target = (
+        Path(file_path).expanduser().resolve()
+        if file_path
+        else Path.cwd() / f"{schema}_dump.sql"                
+    )
+
+    command = [
+        "pg_dump",
+        "--no-owner",
+        "--no-privileges",
+        "-n", schema,
+        "-f", str(target)
+    ]
+
+    command.append(build_dsn())
+
+    proc = subprocess.run(command, capture_output=True, text=True)
+    if proc.returncode != 0:
+        raise RuntimeError(proc.stderr)
+
+    return f"Schema '{schema}' berhasil diekspor ke {target}"
+
 
 if __name__ == "__main__":
     mcp.run()
